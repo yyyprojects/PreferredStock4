@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Preferred Stock? An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues & Energetic Oranges/Pinks (#003f5c, #7a5195, #ef5675, #ffa600) -->
+    <!-- Narrative & Structure Plan: The infographic tells a story, starting with a simple definition (The Hybrid Security), moving to core features (Anatomy of a Preferred Share), then comparing it to other assets (The Capital Stack & Risk/Reward Profile), detailing its variations (A Flavor for Every Investor), and concluding with a clear summary for decision-making (The Investor's Checklist). This logical progression guides the user from basic concepts to practical considerations. -->
+    <!-- Visualization & Content Choices: 1. Anatomy Section: Goal->Inform. Viz->Icon-based cards (HTML/Unicode). Justification->Visually breaks down key features for easy recall. NO SVG. 2. Capital Stack: Goal->Organize. Viz->HTML/CSS flowchart. Justification->Clearly shows liquidation priority. NO SVG/Mermaid. 3. Risk/Reward Profile: Goal->Compare. Viz->Chart.js Radar Chart. Justification->Excellent for multi-variable comparison (Risk, Income, Growth) between assets. Uses Canvas. NO SVG. 4. Types Section: Goal->Organize. Viz->Card grid. Justification->Clean, scannable presentation of different types. NO SVG. 5. Pros & Cons: Goal->Compare. Viz->Two-column list. Justification->Direct and easy-to-understand comparison. NO SVG. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 60vh;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ef5675, #ffa600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-12">
+
+        <!-- Section 1: Hero -->
+        <section class="text-center mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#003f5c] mb-4">The Investor's Hybrid</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Discover <span class="font-semibold gradient-text">Preferred Stock</span>: a unique investment that blends the steady income of a bond with the ownership of a stock.
+            </p>
+        </section>
+
+        <!-- Section 2: Anatomy of a Preferred Share -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-12">Anatomy of a Preferred Share</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="card p-8">
+                    <div class="text-6xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-[#7a5195] mb-2">Fixed Dividends</h3>
+                    <p class="text-gray-600">Receive a predictable, fixed cash payment at regular intervals, providing a stable income stream much like a bond's coupon.</p>
+                </div>
+                <div class="card p-8">
+                    <div class="text-6xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold text-[#ef5675] mb-2">Priority Payouts</h3>
+                    <p class="text-gray-600">You get paid your dividends before common stockholders. In case of bankruptcy, you're also ahead of them in line for asset claims.</p>
+                </div>
+                <div class="card p-8">
+                    <div class="text-6xl mb-4">🤫</div>
+                    <h3 class="text-xl font-bold text-[#ffa600] mb-2">No Voting Rights</h3>
+                    <p class="text-gray-600">This priority comes at a price: you generally don't get a vote in company matters. You're an owner, but a silent one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Capital Stack & Comparison -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-12">Where It Ranks: The Risk & Reward Profile</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">Preferred stock sits in a unique middle ground. It's less risky than common stock but carries more risk than bonds. This section visualizes its place in the "capital stack" and compares its key attributes.</p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Capital Stack Diagram -->
+                <div class="flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-center text-[#7a5195] mb-6">The Payout Pecking Order</h3>
+                    <div class="w-full max-w-xs space-y-2">
+                        <div class="bg-white border-2 border-[#003f5c] rounded-lg p-4 text-center shadow-lg">
+                            <p class="font-bold text-[#003f5c]">1. Bondholders (Creditors)</p>
+                            <p class="text-sm text-gray-500">First in line</p>
+                        </div>
+                        <div class="text-center text-2xl text-gray-400">▼</div>
+                        <div class="bg-[#ef5675] text-white rounded-lg p-4 text-center shadow-lg ring-4 ring-offset-2 ring-[#ef5675]">
+                            <p class="font-bold">2. Preferred Stockholders</p>
+                            <p class="text-sm opacity-90">The Middle Ground</p>
+                        </div>
+                        <div class="text-center text-2xl text-gray-400">▼</div>
+                        <div class="bg-white border-2 border-gray-300 rounded-lg p-4 text-center shadow-lg">
+                            <p class="font-bold text-gray-600">3. Common Stockholders</p>
+                            <p class="text-sm text-gray-500">Last in line</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Radar Chart -->
+                <div class="card p-6">
+                    <div class="chart-container">
+                        <canvas id="comparisonRadarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Types of Preferred Stock -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-12">A Flavor for Every Investor</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">Companies issue different types of preferred stock with special features. Understanding these is key to picking the right one for your goals.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-[#7a5195] mb-2">Cumulative</h3>
+                    <p class="text-gray-600">If the company skips a dividend, it adds up. They must pay you all missed dividends before common stockholders get a dime.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-[#ef5675] mb-2">Callable</h3>
+                    <p class="text-gray-600">The company can buy back the stock from you at a set price. This is a risk if interest rates fall, as it caps your potential gains.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-[#ffa600] mb-2">Convertible</h3>
+                    <p class="text-gray-600">Gives you the option to convert your preferred shares into common stock, letting you share in the company's growth potential.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-[#003f5c] mb-2">Participating</h3>
+                    <p class="text-gray-600">Allows you to receive extra dividends on top of your fixed rate if the company hits certain profit targets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Investor Checklist -->
+        <section>
+            <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-12">The Investor's Checklist</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">👍 Pros</h3>
+                    <ul class="space-y-2 text-green-700 list-disc list-inside">
+                        <li><b>Steady Income:</b> Reliable, fixed dividend payments.</li>
+                        <li><b>Lower Risk:</b> Less price volatility than common stock.</li>
+                        <li><b>Priority Status:</b> Higher claim on assets in bankruptcy.</li>
+                        <li><b>Tax Benefits:</b> Dividends may be taxed at lower rates.</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-2xl font-bold text-red-800 mb-4">👎 Cons</h3>
+                    <ul class="space-y-2 text-red-700 list-disc list-inside">
+                        <li><b>Limited Growth:</b> Price is unlikely to soar like common stock.</li>
+                        <li><b>Interest Rate Risk:</b> Prices fall when interest rates rise.</li>
+                        <li><b>Call Risk:</b> Issuer can buy it back, capping your upside.</li>
+                        <li><b>No Say:</b> Lack of voting rights means no control.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center py-8 mt-12 bg-gray-800 text-white">
+        <p>This infographic is for informational purposes only.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapLabel = (label) => {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const radarCtx = document.getElementById('comparisonRadarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Income Stability', 'Growth Potential', 'Liquidation Priority', 'Low Risk'],
+                    datasets: [{
+                        label: 'Preferred Stock',
+                        data: [8, 3, 7, 7],
+                        backgroundColor: 'rgba(239, 86, 117, 0.4)',
+                        borderColor: '#ef5675',
+                        pointBackgroundColor: '#ef5675',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ef5675'
+                    }, {
+                        label: 'Common Stock',
+                        data: [2, 9, 2, 3],
+                        backgroundColor: 'rgba(255, 166, 0, 0.4)',
+                        borderColor: '#ffa600',
+                        pointBackgroundColor: '#ffa600',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ffa600'
+                    }, {
+                        label: 'Bonds',
+                        data: [7, 1, 9, 9],
+                        backgroundColor: 'rgba(0, 63, 92, 0.4)',
+                        borderColor: '#003f5c',
+                        pointBackgroundColor: '#003f5c',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#003f5c'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 13,
+                                    weight: 'bold'
+                                },
+                                color: '#003f5c'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                color: '#7a5195',
+                                stepSize: 2
+                            },
+                            min: 0,
+                            max: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#003f5c',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
